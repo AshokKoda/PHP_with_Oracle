@@ -1,0 +1,64 @@
+<html>
+<title>EMPLOYEE DETAILS</title>
+<style>
+
+    div
+    {
+        background-color: white;
+        width: 550px;
+        border: 15px black;
+        padding: 40px;
+        margin: 20px;
+        margin-left: 350px;
+        margin-right: 350px;
+    }
+    p
+    {
+        border:5px black;
+        border-radius: 20px;
+        padding: 10px;
+    }
+     
+    
+</style>
+
+<body>
+
+    <head>
+        <script>
+            function validateForm() {
+                var x = document.forms["myForm"]["Employee-id"].value;
+                if (x == "") {
+                    alert("Name must be filled out");
+                    return false;
+                }
+            }
+        </script>
+    </head>
+    <h1>
+        <center>
+            EMPLOYEE DETAILS
+        </center>
+    </h1>
+    <form>
+        <div>
+            <center>
+                <p>
+                    <form Employee-Id="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+                        Employee-Id: <input type="text" name="Employee-id">
+
+                        <br><br>
+                        <input type="button" name="Add" value="Add">
+                    
+                    </form>
+                    <br><br>
+                    <input type="button" name="Display" value="Display">
+                    <input type="button" name="Delete" value="Delete">
+                      
+                    
+
+            </center>
+        </div>
+    </form>
+
+</body>

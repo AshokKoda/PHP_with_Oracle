@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--styling--> 
+    <style>
+        div {
+  background-color:white;
+  width: 300px;
+  border: 2px solid black;
+  padding: 50px;
+  margin: 20px;
+  margin-right:100px;
+  margin-left:460px;
+}
+</style>
+
+
+<script>
+function val() 
+if ((document.getElementById("dept_id").value == null) || (document.getElementById("dept_id").value == ""))
+{
+    alert("Please enter department id");
+    document.getElementById("dept_id").focus();
+    return false;
+}
+function call_list()
+{
+  window.location = "dept_list.php";
+}
+//calling validate function
+
+</script>
+</head>
+
+<body>
+
+<!--heading-->
+<h1>
+        <center>
+           DEPARTMENT DETAILS
+        </center>
+    </h1>
+    <div>
+    <center>
+        
+
+<form method="post" action="dept.php">
+<!--to enter employee id-->
+  Department ID: <input type="text" id="dept_id" name="dept_id" maxlength="10"> <br><br>
+  <!--button to call add function-->
+  <input type="submit" id="Add"  value="Add"  name="submit" >
+  <!--button to call update function-->
+  <input type="submit" id="Update" value="Update"  name="submit">
+  <!--button to call display function-->
+   <input type="submit" id="Display" value="Display"  name="submit">
+   <!--button to call delete function-->
+  <input type="submit" id="Delete" value="Delete" name="submit" >
+  <!--button to call list function-->
+  <input type= "submit"  id="list" value="list" name="submit"  >
+  <!--button to exit the page-->
+  <input type="button" value="Exit" onclick="history.back()">
+  <!--button to reset the values  -->
+  <input type="reset" value="Clear"> 
+</form>
+
+</center>
+
+</div>
+
+</body>
+</html>
+
+

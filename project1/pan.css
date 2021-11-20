@@ -1,0 +1,64 @@
+/* styling for PAN*/
+.error {color: #FF0000;} 
+.split
+{
+width:100%;
+position:absolute;
+padding-top:10px;
+}
+.left{
+left:0;
+}
+.right{
+right:0;
+}
+div
+{
+width:100px;
+border:1px solid white;
+margin: 20px;
+margin-right:50px;
+margin-left:10px;
+margin-top:10px;
+margin-bottom:30px;
+}
+img {
+border-radius: 15px;
+}
+ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+width: 200px;
+background-color: #f1f1f1;
+border: 1px solid #555;
+}
+li a {
+display: block;
+color: #000;
+padding: 8px 16px;
+text-decoration: none;
+}
+li {
+text-align: center;
+border-bottom: 1px solid #555;
+}
+li:last-child {
+border-bottom: none;
+}
+li a.active {
+background-color: #4CAF50;
+color: white;
+}
+li a:hover:not(.active) {
+background-color: #555;
+color: white;
+}
+table,th,td{
+width: 500px;
+border:1px solid black;
+border-collapse:collapse;
+}
+th,td{
+padding:10px;
+}

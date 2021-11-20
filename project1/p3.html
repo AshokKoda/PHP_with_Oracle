@@ -1,0 +1,168 @@
+<html>
+<title>HTML FORM</title>
+<style>
+    div
+    {
+        background-color: aliceblue;
+        width: 350px;
+        border: 15px black;
+        padding: 40px;
+        margin: 20px;
+        margin-left: 450px;
+        margin-right: 100px;
+    }
+    p
+    {
+        border:5px black;
+        border-radius: 20px;
+        padding: 10px;
+    }
+    
+</style>
+
+<body>
+    <?php
+        // define variables and set to empty values
+        $nameErr = $emailErr = $genderErr = "";
+        $name = $email = $gender =  "";
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (empty($_POST["name"])) {
+              $nameErr = "Name is required";
+            } else {
+              $name = test_input($_POST["name"]);
+            }
+            
+            if (empty($_POST["email"])) {
+              $emailErr = "Email is required";
+            } else {
+              $email = test_input($_POST["email"]);
+            }
+if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+    $gender = test_input($_POST["gender"]);
+  }
+}
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+  ?>
+
+
+    <h1>
+        <center>
+            REGISTRATION FORM
+        </center>
+    </h1>
+    <form>
+        <div>
+            <center>
+                <p>
+                    <span class="error">* required field</span>
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]);?>">
+                        First Name :
+
+                        <input type="text" name="first_name" />
+                        <span class="error">*
+                            <?php echo $nameErr;?></span><br><br>
+                            <span class="error">* required field</span>
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]);?>">
+                        Last Name : <input type="text" name="last_name" />
+                        <span class="error">*
+                                <?php echo $nameErr;?></span><br><br>
+
+                        Email ID : <input type="text" name="email " />
+                        <span class="error">* <?php echo $emailErr;?></span><br><br>
+
+                        password : <input type="password" name="password" /><br><br>
+                        Gender: <input type="radio" name="male" value="on"> Male
+                        <input type="radio" name="female" value="on"> Female
+                        <span class="error">* <?php echo $genderErr;?></span>
+                        <br><br>
+                        select date of birth :<input type="date">
+                </p><br>
+                <script>
+                    var stateObject = {
+                        "India": {
+                            "Delhi": ["new Delhi", "North Delhi"],
+                            "Kerala": ["Thiruvananthapuram", "Palakkad"],
+                            "Goa": ["North Goa", "South Goa"],
+                            "Andhra Pradesh": ["Vizag", "vijayawada", "Rajamundary"],
+                            "Telangana": ["Hydrabad", "Karimnagar", "Chittor", "Rangareddy"],
+                        },
+                        "Australia": {
+                            "South Australia": ["Dunstan", "Mitchell"],
+                            "Victoria": ["Altona", "Euroa"]
+                        }, "Canada": {
+                            "Alberta": ["Acadia", "Bighorn"],
+                            "Columbia": ["Washington", ""]
+                        },
+                    }
+                    window.onload = function () {
+                        var countySel = document.getElementById("countySel"),
+                            stateSel = document.getElementById("stateSel"),
+                            districtSel = document.getElementById("districtSel");
+                        for (var country in stateObject) {
+                            countySel.options[countySel.options.length] = new Option(country, country);
+                        }
+                        countySel.onchange = function () {
+                            stateSel.length = 1; // remove all options bar first
+                            districtSel.length = 1; // remove all options bar first
+                            if (this.selectedIndex < 1) return; // done 
+                            for (var state in stateObject[this.value]) {
+                                stateSel.options[stateSel.options.length] = new Option(state, state);
+                            }
+                        }
+                        countySel.onchange(); // reset in case page is reloaded
+                        stateSel.onchange = function () {
+                            districtSel.length = 1; // remove all options bar first
+                            if (this.selectedIndex < 1) return; // done 
+                            var district = stateObject[countySel.value][this.value];
+                            for (var i = 0; i < district.length; i++) {
+                                districtSel.options[districtSel.options.length] = new Option(district[i], district[i]);
+                            }
+                        }
+                    }
+
+                </script>
+                <form name="myform" id="myForm">
+                    Select Country: <select name="state" id="countySel" size="1">
+                        <option value="" selected="selected">Select Country</option>
+                    </select>
+                    <br>
+                    <br>
+                    Select State: <select name="countrya" id="stateSel" size="1">
+                        <option value="" selected="selected"> Select State</option>
+                    </select>
+                    <br>
+                    <br>
+                    Select District: <select name="district" id="districtSel" size="1">
+                        <option value="" selected="selected">Select District</option>
+                    </select><br>
+
+                    <closeform></closeform>
+                </form>
+                <br><br>
+
+                <input type="submit" name="submit" value="submit">
+                <input type="reset" name="reset" value="reset">
+                <input type="button" name="ok" value="OK">
+            </center>
+        </div>
+    </form>
+    <?php
+    echo "<h2>Your Input:</h2>";
+    echo $name;
+    echo "<br>";
+    echo $email;
+    echo "<br>";
+    echo $gender;
+    ?>
+</body>
+
+</html>
